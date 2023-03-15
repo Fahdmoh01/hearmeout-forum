@@ -24,6 +24,9 @@ MEDIA_DIR = os.path.join(BASE_DIR,'media')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 key = None
+with open('secret.key') as f:
+    key = f.read().split()
+SECRET_KEY= key
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -41,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'forum',
-    'registraion',
+    'registration',
     ]
 
 MIDDLEWARE = [
@@ -140,7 +143,7 @@ REGISTRATION_OPEN = True
 REGISTRATION_AUTO_LOGIN = True
 
 #The URL that django redirects users to after loggin.
-LOGIN_REDIRECT_URL = 'rango:index'
+LOGIN_REDIRECT_URL = 'forum:index'
 
 # The page usrs are directed to if they are not logged in.
 LOGIN_URL = 'auth_login'
