@@ -5,4 +5,6 @@ from django.views import View
 
 class IndexView(View):
     def get(self, request):
-            return render(request, 'forum/index.html/')
+            context_dict={}
+            context_dict['boldmessage']='We out here fighting for our lives!'
+            return render(request, 'forum/index.html/', context= context_dict)
