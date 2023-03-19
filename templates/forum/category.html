@@ -1,0 +1,33 @@
+{% load staticfiles %}
+<div>
+	{% if category %}
+	<div>{{category.name}}</div>
+	<div>{{category.engagements}}</div>
+		{% if posts %}
+		<ul>
+			{% for post in posts %}
+			<li>
+				<h1>
+					{{post.topic}}
+				</h1>
+				<p>
+					{{post.comment}}
+				</p>
+				{% if post.likes > 1 %}
+				<p>post likes: {{post.likes}} likes</p>
+				{% elif page.views == 1 %}
+				<p>post likes: {{post.likes}} likes</p>
+				{% else %}
+				<p>post likes: {{post.likes}} likes</p>
+				{% endif %}
+			</li>
+			 {% endfor %}
+		</ul>
+		{% endif %}
+		{% endif %}
+</div>
+
+<div>
+	<a href="{% url 'forum:add_post' category.slug %}">Make a Post</a> <br />
+	<a href="{% url 'forum:index' %}">Home Page</a>
+</div>

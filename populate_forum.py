@@ -60,14 +60,14 @@ def populate():
 	for cat, cat_data in cats.items():
 		c = add_cat(cat,cat_data['engagements'])
 		for p in cat_data['posts']:
-			add_page(c, p['topic'], p['comment'],p['likes'])
+			add_post(c, p['topic'], p['comment'],p['likes'])
 	
 	# Print out the categories we have added.
 	for c in Category.objects.all():
 		for p in Post.objects.filter(category=c):
 			print(f'- {c}: {p}')
 
-def add_page(cat, topic, comment, likes):
+def add_post(cat, topic, comment, likes):
 	p = Post.objects.get_or_create(category=cat, topic=topic)[0]
 	p.comment= comment
 	p.likes=likes

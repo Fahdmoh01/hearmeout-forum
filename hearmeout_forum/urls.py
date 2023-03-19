@@ -23,16 +23,15 @@ from registration.backends.simple.views import RegistrationView
 
 class MyRegistrationView(RegistrationView):
     def get_success_url(self, user):
-        return reverse('rango:register_profile')
+        return reverse('forum:register_profile')
 
 urlpatterns = [
 	path('',views.IndexView.as_view(), name='index'),
 	path('forum/',include('forum.urls')),
-    # #The above maps any URLs starting with rango/ to be handled by rango
 	path('admin/', admin.site.urls),
-    # path('accounts/register/',
-    #      MyRegistrationView.as_view(),
-    #      name= 'registration_register'),
+    path('accounts/register/',
+         MyRegistrationView.as_view(),
+         name= 'registration_register'),
          
     #configuration with registration redux
 	path('accounts/', include('registration.backends.simple.urls'))
